@@ -67,10 +67,34 @@ public class CA2Project {
                 - Get the rows and columns from the user.
                 - The size of the array is the multiplication of the user inputs.
             Populate the 2D array with the multiplication values and display the table in matrix form.
-                -Get input from the user to populate the array:
-                    -We need a inner and outter loop here. The outer loop will control Rows while inner loop controls columns
-                
+                -Loops to create the multiplication table, with outer loop representing the rows and the inner looping representing the columns:
+            
+            System.out.println("What is the size of the multiplication table: ");
+            int multTableSize = input.nextInt();
+            int[][] multTable = new int[multTableSize][multTableSize];
+            int num1 = 1;
+            int multiplier = 1;
+            System.out.println("This is your Matrix multiplication table: ");
+            for(int i=0; i < multTable.length; i++){
+                for(int j=0; j< multTable.length; j++){
+                    int result = num1 * multiplier;
+                    multTable[i][j] = result;
+                    multiplier++;
+                    if(result < 10){
+                        System.out.print("  0" + multTable[i][j] + "   ");
+                    }else{
+                        System.out.print("  " + multTable[i][j] + "   ");
+                    }
+                }
+                mult++;
+                multiplier = 1;
+                System.out.println(" ");
+            }
+            
+            //System.out.println(Arrays.deepToString(multTable));
             */
+            
+            
             
         }catch(Exception e){
             System.out.println(e.getLocalizedMessage());
