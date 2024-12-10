@@ -59,6 +59,19 @@ public class CA2Project {
             
             */
             
+            
+            /*
+            Task 2: Multiplication Table Using 2D Array
+            Write a program that generates a multiplication table using a 2D array. The size of the table (e.g.n×n)should be input by the user.
+                - Declare a 2d array.
+                - Get the rows and columns from the user.
+                - The size of the array is the multiplication of the user inputs.
+            Populate the 2D array with the multiplication values and display the table in matrix form.
+                -Get input from the user to populate the array:
+                    -We need a inner and outter loop here. The outer loop will control Rows while inner loop controls columns
+                
+            */
+            
         }catch(Exception e){
             System.out.println(e.getLocalizedMessage());
         }
