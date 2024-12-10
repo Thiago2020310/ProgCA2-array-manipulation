@@ -125,7 +125,7 @@ public class CA2Project {
                         -Within the loop we will calculate the result by adding the sum with the element on row and i;
                         -Lastly we will increment the row variable within the loop to jump to next row. 
             */
-            
+            /*
             System.out.println("Enter the size of the matrix");
             int matrixSize = input.nextInt();
             System.out.println("Enter the elements row by row: ");
@@ -160,6 +160,15 @@ public class CA2Project {
                 row++;
             }
             System.out.println("The sum of the secondary diagonal on this matrix is: " + secSumResult);
+
+            */
+            
+            /*
+            Task 4: Spiral Traversal of a Matrix
+            Write a program to traverse a matrix in spiral order. The program should accept the dimensions and
+            elements of the matrix as input and then display the spiral traversal.
+            */
+            
         }catch(Exception e){
             System.out.println(e.getLocalizedMessage());
         }
