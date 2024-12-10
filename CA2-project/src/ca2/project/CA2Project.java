@@ -115,7 +115,15 @@ public class CA2Project {
                 -To calculate the main diagonal we will use the i for both indexes on the table.
                     -To calculate the main diagonal we only need to run a one for loop. Theres no need for a loop inside a loop.
                     -We can use i for both indexes of row and column. And increment the element on those indexes to the sum. 
-                -To calculate the secondary diagonal of a square matrix.
+                -To calculate the secondary diagonal of a square matrix:
+                    -First we need to hold the value of row (starting on 0)
+                    -Then run a for loop, but now we are going to use the values inverted:
+                        -The order for the calc will be last item on row 1, second last item on row 2 and so on
+                        -The loop will start from the max length. 
+                        -Since we need index 0, the loop will start on higher than -1 (equals 0)
+                        -Lastly we substract 1 from i every loop;
+                        -Within the loop we will calculate the result by adding the sum with the element on row and i;
+                        -Lastly we will increment the row variable within the loop to jump to next row. 
             */
             
             System.out.println("Enter the size of the matrix");
@@ -139,14 +147,19 @@ public class CA2Project {
                 } 
                 System.out.println(" ");
             }
-            int sumResult = 0;
+            int mainSumResult = 0;
             for(int i=0; i < diagonalSum.length; i++){
-                sumResult += diagonalSum[i][i];
+                mainSumResult += diagonalSum[i][i];
             }
-            System.out.println("The main diagonal on this matrix sum to: " + sumResult);
+            System.out.println("The main diagonal on this matrix sum to: " + mainSumResult);
             
-            
-            
+            int secSumResult = 0;
+            int row = 0;
+            for(int i = diagonalSum.length-1; i > -1; i--){
+                secSumResult += diagonalSum[row][i];
+                row++;
+            }
+            System.out.println("The sum of the secondary diagonal on this matrix is: " + secSumResult);
         }catch(Exception e){
             System.out.println(e.getLocalizedMessage());
         }
