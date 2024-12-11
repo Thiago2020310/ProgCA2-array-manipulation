@@ -184,6 +184,36 @@ public class CA2Project {
                     -Then go bottom to top on the left boundarie.
                     -Repeat the process untill left == right and top == bottom.
             */
+            System.out.print("Enter the size of the matrix: ");
+            int trasvMatrixSize = input.nextInt();
+            int[][] transvMatrix = new int[trasvMatrixSize][trasvMatrixSize];
+            System.out.println("Enter the elements of the array: (one by one)");
+            for(int i =0; i<transvMatrix.length; i++){
+                System.out.println("Row " +i + ":");
+                for(int j=0; j<transvMatrix.length; j++){
+                    transvMatrix[i][j] = input.nextInt();
+                }
+            }
+            System.out.println("This is your matrix: ");
+            for(int i = 0; i < transvMatrix.length; i++){
+                for (int j = 0; j < transvMatrix.length; j++) {
+                    if(transvMatrix[i][j] < 10){
+                        System.out.print("  0" + transvMatrix[i][j] + "   ");
+                    }else{
+                        System.out.print("  " + transvMatrix[i][j] + "   ");
+                    }
+                } 
+                System.out.println(" ");
+            }
+            int[] transverseArray = new int[trasvMatrixSize * trasvMatrixSize];
+            for(int i =0; i<transverseArray.length; i++){
+                System.out.println("Row " +i + ":");
+                for(int j=0; j<transvMatrix.length; j++){
+                    transverseArray[j]= transvMatrix[i][j];
+                }
+            }
+            System.out.println(Arrays.toString(transverseArray));
+            
             
         }catch(Exception e){
             System.out.println(e.getLocalizedMessage());
