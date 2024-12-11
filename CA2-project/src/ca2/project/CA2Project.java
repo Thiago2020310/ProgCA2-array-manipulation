@@ -167,6 +167,22 @@ public class CA2Project {
             Task 4: Spiral Traversal of a Matrix
             Write a program to traverse a matrix in spiral order. The program should accept the dimensions and
             elements of the matrix as input and then display the spiral traversal.
+                -The dimension will be 2d based on the array size input (nxn) like the past arrays.
+                -The elements will be input by the user like the previous tasks.
+                -To spiral the elements 
+                1   2   3       1,2,3 - First row, then:
+                4   5   6   ->  6,9 - Last column, then:
+                7   8   9       8,7 - Last row inverted:
+                                4,5 - middle row.
+                -First we need to define the boundaries of the starter point (top) and last row (bottom)
+                -We also need left define, which will be 0,1,2,3,4(Similar method to the multiplication matrix calc)
+                -The right side will be defined by column -1, like used on the secondary diagonal calculator.
+                -With these defined we can work on the loop that will go as follows:
+                    -Loop to the end of first row (top) increment the top bound
+                    -Then go down on the right bound (every last element of the rows).Then decrement the right bound.
+                    -Then go reverse on the bottom row. Then decrement the bottom row.
+                    -Then go bottom to top on the left boundarie.
+                    -Repeat the process untill left == right and top == bottom.
             */
             
         }catch(Exception e){
