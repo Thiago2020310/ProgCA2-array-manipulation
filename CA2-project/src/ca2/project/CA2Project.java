@@ -205,12 +205,14 @@ public class CA2Project {
                 } 
                 System.out.println(" ");
             }
-            int[] transverseArray = new int[trasvMatrixSize * trasvMatrixSize];
-            for(int i =0; i<transverseArray.length; i++){
-                System.out.println("Row " +i + ":");
-                for(int j=0; j<transvMatrix.length; j++){
-                    transverseArray[j]= transvMatrix[i][j];
-                }
+            int[] transverseArray = new int[trasvMatrixSize];
+            
+            //First we get the first row.
+            int row = 0;
+            int column = 0;
+            for(int i =0; i< transvMatrix.length; i++){
+                transverseArray[i] = transvMatrix[row][i];
+                column++;
             }
             System.out.println(Arrays.toString(transverseArray));
             
