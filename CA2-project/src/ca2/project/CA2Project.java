@@ -207,14 +207,20 @@ public class CA2Project {
             }
             int[] transverseArray = new int[trasvMatrixSize];
             
-            //First we get the first row.
+            //Row and column to control the loops 
             int row = 0;
             int column = 0;
+            int top = 0;
+            int bottomm = transvMatrix.length -1;
+            int right = transvMatrix.length -1;
+            int left = 0;
             for(int i =0; i< transvMatrix.length; i++){
                 transverseArray[i] = transvMatrix[row][i];
                 column++;
             }
             System.out.println(Arrays.toString(transverseArray));
+            
+            System.out.println(bottomm);
             
             
         }catch(Exception e){
