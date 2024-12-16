@@ -182,7 +182,7 @@ public class CA2Project {
                     -Then go down on the right bound (every last element of the rows).Then decrement the right bound.
                     -Then go reverse on the bottom row. Then decrement the bottom row.
                     -Then go bottom to top on the left boundarie.
-                    -Repeat the process untill left == right and top == bottom.
+                    -Repeat the process untill left > right and top > bottom.
             */
             System.out.print("Enter the size of the matrix: ");
             int trasvMatrixSize = input.nextInt();
@@ -213,25 +213,67 @@ public class CA2Project {
             int right = transvMatrix.length -1;
             int left = 0;
             
-            for(int i =0; i< transvMatrix.length; i++){
-                transverseArray[elementPos] = transvMatrix[top][i];
-                elementPos++;
-            }
-            top++;
-            for(int i = top; i < bottom +1; i++){
-//                System.out.println(i);
-//                System.out.println("right: " + right);
-//                System.out.println("Pushing: " + transvMatrix[right][i]);
-                transverseArray[elementPos] = transvMatrix[i][right];
-                elementPos++;
+            while(top <= bottom && left <= right){
+                //Transverse rigth
+                for(int i = left; i<= bottom; i++){
+                    transverseArray[elementPos] = transvMatrix[top][i];
+                    elementPos++;
+                }
+                top++;
+                
+                //Transverse to bottom
+                for(int i = top; i <= bottom; i++){
+    //                System.out.println(i);
+    //                System.out.println("right: " + right);
+    //                System.out.println("Pushing: " + transvMatrix[right][i]);
+                    transverseArray[elementPos] = transvMatrix[i][right];
+                    elementPos++;
+                }
+                right--;
+                
+                //Transverse to left
+                if(top <= bottom){
+                    for (int i = right; i >= left; i--) {
+                        //                System.out.println(i);
+                        //                System.out.println("Left: " + left);
+                        //                System.out.println("Pushing: " + transvMatrix[bottom][i]);
+                        transverseArray[elementPos] = transvMatrix[bottom][i];
+                        elementPos++;
+                    }
+                    bottom--;
+                }
+                
+                //Transverse to top
+                if(left <= right){
+                    for (int i = bottom; i >= top; i--) {
+                        //                System.out.println(i);
+                        //                System.out.println("Top: " + top);
+                        //                System.out.println("Pushing: " + transvMatrix[i][left]);
+                        transverseArray[elementPos] = transvMatrix[i][left];
+                        elementPos++;
+                    }
+                    left++;
+                }
+                
+                //Repeat from top until condition is met.
             }
             System.out.println(Arrays.toString(transverseArray));
             
         }catch(Exception e){
             System.out.println(e.getLocalizedMessage());
         }
-
         
+        /*
+        Task 5: Bubble Sort - Sorting an Array Write a Java program to implement the Bubble Sort algorithm to sort an array of integers in
+        ascending order
+        . The program should:
+        1. Accept the size of the array and the elements of the array as input
+        .
+          2. Sort the array using the Bubble Sort technique
+        .
+        3. Display the array before and after sorting.
+        4. Count and display the total number of swaps performed during the sorting process.
+        */
         
         
 
