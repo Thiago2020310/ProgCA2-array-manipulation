@@ -205,23 +205,27 @@ public class CA2Project {
                 } 
                 System.out.println(" ");
             }
-            int[] transverseArray = new int[trasvMatrixSize];
-            
+            int[] transverseArray = new int[trasvMatrixSize * trasvMatrixSize];
+            int elementPos = 0;
             //Row and column to control the loops 
-            int row = 0;
-            int column = 0;
             int top = 0;
-            int bottomm = transvMatrix.length -1;
+            int bottom = transvMatrix.length -1;
             int right = transvMatrix.length -1;
             int left = 0;
+            
             for(int i =0; i< transvMatrix.length; i++){
-                transverseArray[i] = transvMatrix[row][i];
-                column++;
+                transverseArray[elementPos] = transvMatrix[top][i];
+                elementPos++;
+            }
+            top++;
+            for(int i = top; i < bottom +1; i++){
+//                System.out.println(i);
+//                System.out.println("right: " + right);
+//                System.out.println("Pushing: " + transvMatrix[right][i]);
+                transverseArray[elementPos] = transvMatrix[i][right];
+                elementPos++;
             }
             System.out.println(Arrays.toString(transverseArray));
-            
-            System.out.println(bottomm);
-            
             
         }catch(Exception e){
             System.out.println(e.getLocalizedMessage());
