@@ -277,14 +277,21 @@ public class CA2Project {
             -We can use a variable to hold this number and increment the variable when the conditional is true.
              */
             int[] arrayTest = {6,2,8,4,10};
-            for (int i = 0 ; i < arrayTest.length; i++) {
-                int tempNum = arrayTest[i];
-                for(int j = 0; j< arrayTest.length; i++){
-                    if(tempNum < arrayTest[j]){
-                        
+            System.out.println(Arrays.toString(arrayTest));
+
+            for(int i = 0; i < arrayTest.length; i++) {
+                for(int j = 0; j<arrayTest.length; j++){
+                    if (arrayTest[i] > arrayTest[j]) {
+                        int tempNum = arrayTest[j];
+                        System.out.println(arrayTest[i] + " is higher than " + arrayTest[j]);
+                        arrayTest[j] = arrayTest[i];
+                        arrayTest[i] = tempNum;
+                    } else {
+                        System.out.println("Not higher");
                     }
                 }
-                System.out.println(tempNum);
+                
+                System.out.println(Arrays.toString(arrayTest));
             }
             
         }catch(Exception e){
