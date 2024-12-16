@@ -184,6 +184,8 @@ public class CA2Project {
                     -Then go bottom to top on the left boundarie.
                     -Repeat the process untill left > right and top > bottom.
             */
+            
+            /*
             System.out.print("Enter the size of the matrix: ");
             int trasvMatrixSize = input.nextInt();
             int[][] transvMatrix = new int[trasvMatrixSize][trasvMatrixSize];
@@ -259,6 +261,8 @@ public class CA2Project {
             }
             System.out.println("This is your matrix transversed: ");
             System.out.println(Arrays.toString(transverseArray));
+            */
+            
             
             /*
             Task 5: Bubble Sort - Sorting an Array Write a Java program to implement the Bubble Sort algorithm to sort an array of integers in
@@ -272,20 +276,15 @@ public class CA2Project {
             4. Count and display the total number of swaps performed during the sorting process.
             -We can use a variable to hold this number and increment the variable when the conditional is true.
              */
-            for (int i = 0; i < transverseArray.length; i++) {
-                int numOne = transverseArray[i];
-                System.out.println(numOne);
-                for(int j = i; j < transverseArray.length; j++){
-                    if(numOne > transverseArray[j]){
-                        int tempNum = transverseArray[j];
-                        transverseArray[j] = transverseArray[i];
-                        transverseArray[i] = tempNum;
-                        System.out.println("The numbers " + numOne +" and "+ tempNum + " have been swap");
-                        System.out.println(Arrays.toString(transverseArray));
-                    }else{
-                        System.out.println("The number is not higher.");
+            int[] arrayTest = {6,2,8,4,10};
+            for (int i = 0 ; i < arrayTest.length; i++) {
+                int tempNum = arrayTest[i];
+                for(int j = 0; j< arrayTest.length; i++){
+                    if(tempNum < arrayTest[j]){
+                        
                     }
                 }
+                System.out.println(tempNum);
             }
             
         }catch(Exception e){
