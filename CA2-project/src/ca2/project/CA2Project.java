@@ -257,23 +257,41 @@ public class CA2Project {
                 
                 //Repeat from top until condition is met.
             }
+            System.out.println("This is your matrix transversed: ");
             System.out.println(Arrays.toString(transverseArray));
+            
+            /*
+            Task 5: Bubble Sort - Sorting an Array Write a Java program to implement the Bubble Sort algorithm to sort an array of integers in
+            ascending order
+            . The program should:
+            1. Accept the size of the array and the elements of the array as input
+            2. Sort the array using the Bubble Sort technique
+                -For this we will loop through the array elements. 
+                -Buble sort is the technique of comparing two elements and sort them on an array from low to high.
+            3. Display the array before and after sorting.
+            4. Count and display the total number of swaps performed during the sorting process.
+            -We can use a variable to hold this number and increment the variable when the conditional is true.
+             */
+            for (int i = 0; i < transverseArray.length; i++) {
+                int numOne = transverseArray[i];
+                System.out.println(numOne);
+                for(int j = i; j < transverseArray.length; j++){
+                    if(numOne > transverseArray[j]){
+                        int tempNum = transverseArray[j];
+                        transverseArray[j] = transverseArray[i];
+                        transverseArray[i] = tempNum;
+                        System.out.println("The numbers " + numOne +" and "+ tempNum + " have been swap");
+                        System.out.println(Arrays.toString(transverseArray));
+                    }else{
+                        System.out.println("The number is not higher.");
+                    }
+                }
+            }
             
         }catch(Exception e){
             System.out.println(e.getLocalizedMessage());
         }
-        
-        /*
-        Task 5: Bubble Sort - Sorting an Array Write a Java program to implement the Bubble Sort algorithm to sort an array of integers in
-        ascending order
-        . The program should:
-        1. Accept the size of the array and the elements of the array as input
-        .
-          2. Sort the array using the Bubble Sort technique
-        .
-        3. Display the array before and after sorting.
-        4. Count and display the total number of swaps performed during the sorting process.
-        */
+
         
         
 
