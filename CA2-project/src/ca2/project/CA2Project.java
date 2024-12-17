@@ -278,21 +278,22 @@ public class CA2Project {
              */
             int[] arrayTest = {6,2,8,4,10};
             System.out.println(Arrays.toString(arrayTest));
+            int counter = 0;
 
             for(int i = 0; i < arrayTest.length; i++) {
-                for(int j = 0; j<arrayTest.length; j++){
-                    if (arrayTest[i] > arrayTest[j]) {
+                for(int j = 0; j < arrayTest.length-1-i; j++){
+                    if (arrayTest[j] > arrayTest[j +1]) {
                         int tempNum = arrayTest[j];
-                        System.out.println(arrayTest[i] + " is higher than " + arrayTest[j]);
-                        arrayTest[j] = arrayTest[i];
-                        arrayTest[i] = tempNum;
-                    } else {
-                        System.out.println("Not higher");
+                        arrayTest[j] = arrayTest[j +1];
+                        arrayTest[j+1] = tempNum;
+                        counter++;
+                        System.out.println("Elements swaped: " + counter);
+                        System.out.println("This is the array after the swap " + Arrays.toString(arrayTest));
                     }
                 }
-                
-                System.out.println(Arrays.toString(arrayTest));
             }
+            System.out.println("This is the array after finishing sorting: " + Arrays.toString(arrayTest));
+            System.out.println("The elements had been swaped " + counter + " times.");
             
         }catch(Exception e){
             System.out.println(e.getLocalizedMessage());
