@@ -147,6 +147,7 @@ public class CalculatorCA2 {
             }
         }catch(Exception e){
             System.out.println("Error: Only ingeter numbers accepted.");
+            error = true;
         }
 
 
@@ -188,44 +189,63 @@ public class CalculatorCA2 {
                 -Lastly we will increment the row variable within the loop to jump to next row. 
      */
     
-    
-    
-    
     public String diagSum(){
-        System.out.println("Enter the size of the matrix");
-        int matrixSize = input.nextInt();
-        System.out.println("Enter the elements row by row: ");
-        int[][] diagonalSum = new int[matrixSize][matrixSize];
-        for(int i = 0; i < matrixSize; i++){
-            System.out.println("Row " + i + ": (one by one)");
-            for (int j = 0; j < matrixSize; j++) {
-                diagonalSum[i][j] = input.nextInt();
-            } 
-        }
-        System.out.println("This is your matrix: ");
-        for(int i = 0; i < matrixSize; i++){
-            for (int j = 0; j < matrixSize; j++) {
-                if(diagonalSum[i][j] < 10){
-                    System.out.print("  0" + diagonalSum[i][j] + "   ");
-                }else{
-                    System.out.print("  " + diagonalSum[i][j] + "   ");
+        String message = "";
+        boolean error = false;
+        try{
+            System.out.println("Enter the size of the matrix");
+            int matrixSize = 0;
+            try {
+                matrixSize = input.nextInt();
+            } catch (Exception e) {
+                System.out.println("Error: You need to input an integer number for the size of the array.");
+                error = true;
+            }
+            if (error) {
+                return null;
+            }
+            System.out.println("Enter the elements row by row: ");
+            int[][] diagonalSum = new int[matrixSize][matrixSize];
+            for (int i = 0; i < matrixSize; i++) {
+                System.out.println("Row " + i + ": (one by one)");
+                for (int j = 0; j < matrixSize; j++) {
+                    diagonalSum[i][j] = input.nextInt();
                 }
-            } 
-            System.out.println(" ");
-        }
-        int mainSumResult = 0;
-        for(int i=0; i < diagonalSum.length; i++){
-            mainSumResult += diagonalSum[i][i];
-        }
+            }
+            System.out.println("This is your matrix: ");
+            for (int i = 0; i < matrixSize; i++) {
+                for (int j = 0; j < matrixSize; j++) {
+                    if (diagonalSum[i][j] < 10) {
+                        System.out.print("  0" + diagonalSum[i][j] + "   ");
+                    } else {
+                        System.out.print("  " + diagonalSum[i][j] + "   ");
+                    }
+                }
+                System.out.println(" ");
+            }
+            int mainSumResult = 0;
+            for (int i = 0; i < diagonalSum.length; i++) {
+                mainSumResult += diagonalSum[i][i];
+            }
 
-        int secSumResult = 0;
-        int row = 0;
-        for(int i = diagonalSum.length-1; i > -1; i--){
-            secSumResult += diagonalSum[row][i];
-            row++;
+            int secSumResult = 0;
+            int row = 0;
+            for (int i = diagonalSum.length - 1; i > -1; i--) {
+                secSumResult += diagonalSum[row][i];
+                row++;
+            }
+            message = "The main diagonal on this matrix sum to: " + mainSumResult + "\n"
+                    + "The sum of the secondary diagonal on this matrix is: " + secSumResult;
+            
+        }catch(Exception e){
+            System.out.println("Error: Only integer numbers accept.");
+            error = true;
         }
-        return "The main diagonal on this matrix sum to: " + mainSumResult + "\n"
-                + "The sum of the secondary diagonal on this matrix is: " + secSumResult;
+        if (error) {
+            return null;
+        } else {
+            return message;
+        }
     }
     
     /*
@@ -251,55 +271,67 @@ public class CalculatorCA2 {
      */
     
     public String spiralTrav(){
-        System.out.print("Enter the size of the matrix: ");
-            int trasvMatrixSize = input.nextInt();
+        String message = "";
+        boolean error = false;
+        try{
+            System.out.print("Enter the size of the matrix: ");
+            int trasvMatrixSize = 0;
+            try {
+                trasvMatrixSize = input.nextInt();
+            } catch (Exception e) {
+                System.out.println("Error: You need to input an integer number for the size of the array.");
+                error = true;
+            }
+            if (error) {
+                return null;
+            }
             int[][] transvMatrix = new int[trasvMatrixSize][trasvMatrixSize];
             System.out.println("Enter the elements of the array: (one by one)");
-            for(int i =0; i<transvMatrix.length; i++){
-                System.out.println("Row " +i + ":");
-                for(int j=0; j<transvMatrix.length; j++){
+            for (int i = 0; i < transvMatrix.length; i++) {
+                System.out.println("Row " + i + ":");
+                for (int j = 0; j < transvMatrix.length; j++) {
                     transvMatrix[i][j] = input.nextInt();
                 }
             }
             System.out.println("This is your matrix: ");
-            for(int i = 0; i < transvMatrix.length; i++){
+            for (int i = 0; i < transvMatrix.length; i++) {
                 for (int j = 0; j < transvMatrix.length; j++) {
-                    if(transvMatrix[i][j] < 10){
+                    if (transvMatrix[i][j] < 10) {
                         System.out.print("  0" + transvMatrix[i][j] + "   ");
-                    }else{
+                    } else {
                         System.out.print("  " + transvMatrix[i][j] + "   ");
                     }
-                } 
+                }
                 System.out.println(" ");
             }
             int[] transverseArray = new int[trasvMatrixSize * trasvMatrixSize];
             int elementPos = 0;
             //Row and column to control the loops 
             int top = 0;
-            int bottom = transvMatrix.length -1;
-            int right = transvMatrix.length -1;
+            int bottom = transvMatrix.length - 1;
+            int right = transvMatrix.length - 1;
             int left = 0;
-            
-            while(top <= bottom && left <= right){
+
+            while (top <= bottom && left <= right) {
                 //Transverse rigth
-                for(int i = left; i<= bottom; i++){
+                for (int i = left; i <= bottom; i++) {
                     transverseArray[elementPos] = transvMatrix[top][i];
                     elementPos++;
                 }
                 top++;
-                
+
                 //Transverse to bottom
-                for(int i = top; i <= bottom; i++){
-    //                System.out.println(i);
-    //                System.out.println("right: " + right);
-    //                System.out.println("Pushing: " + transvMatrix[right][i]);
+                for (int i = top; i <= bottom; i++) {
+//                System.out.println(i);
+//                System.out.println("right: " + right);
+//                System.out.println("Pushing: " + transvMatrix[right][i]);
                     transverseArray[elementPos] = transvMatrix[i][right];
                     elementPos++;
                 }
                 right--;
-                
+
                 //Transverse to left
-                if(top <= bottom){
+                if (top <= bottom) {
                     for (int i = right; i >= left; i--) {
                         //                System.out.println(i);
                         //                System.out.println("Left: " + left);
@@ -309,9 +341,9 @@ public class CalculatorCA2 {
                     }
                     bottom--;
                 }
-                
+
                 //Transverse to top
-                if(left <= right){
+                if (left <= right) {
                     for (int i = bottom; i >= top; i--) {
                         //                System.out.println(i);
                         //                System.out.println("Top: " + top);
@@ -321,10 +353,21 @@ public class CalculatorCA2 {
                     }
                     left++;
                 }
-                
+
                 //Repeat from top until condition is met.
             }
-            return "This is your matrix transversed: \n " + Arrays.toString(transverseArray);
+            
+            message = "This is your matrix transversed: \n " + Arrays.toString(transverseArray);
+            
+        }catch(Exception e){
+            System.out.println("Error: Only integer numbers accepted.");
+            error = true;
+        }
+        if (error) {
+            return null;
+        } else {
+            return message;
+        }
     }
     
     /*
@@ -340,33 +383,56 @@ public class CalculatorCA2 {
     -We can use a variable to hold this number and increment the variable when the conditional is true.
     */
     public String bubbleSort(){
-        System.out.println("Enter the Size of the array: ");
-        int arraySize = input.nextInt();
-        int[] arraySort = new int[arraySize];
-        System.out.println("Enter the elements of the array: (ONE BY ONE)");
-        int tempElement = input.nextInt();
-        arraySort[0] = tempElement;
-        for(int i = 1; i < arraySize; i++){
-            System.out.println("Enter the next element of the array: ");
-            tempElement = input.nextInt();
-            arraySort[i] = tempElement;
-        }
-        System.out.println(Arrays.toString(arraySort));
-        int counter = 0;
-        for(int i = 0; i < arraySort.length; i++) {
-            for(int j = 0; j < arraySort.length-1-i; j++){
-                if (arraySort[j] > arraySort[j +1]) {
-                    int tempNum = arraySort[j];
-                    arraySort[j] = arraySort[j +1];
-                    arraySort[j+1] = tempNum;
-                    counter++;
-                    System.out.println("Elements swaped: " + counter);
-                    System.out.println("This is the array after the swap " + Arrays.toString(arraySort));
+        String message = "";
+        boolean error = false;
+        try{
+            System.out.println("Enter the Size of the array: ");
+            int arraySize = 0;
+            try {
+                arraySize = input.nextInt();
+            } catch (Exception e) {
+                System.out.println("Error: You need to input an integer number for the size of the array.");
+                error = true;
+            }
+            if (error) {
+                return null;
+            }
+            int[] arraySort = new int[arraySize];
+            System.out.println("Enter the elements of the array: (ONE BY ONE)");
+            int tempElement = input.nextInt();
+            arraySort[0] = tempElement;
+            for (int i = 1; i < arraySize; i++) {
+                System.out.println("Enter the next element of the array: ");
+                tempElement = input.nextInt();
+                arraySort[i] = tempElement;
+            }
+            System.out.println(Arrays.toString(arraySort));
+            int counter = 0;
+            for (int i = 0; i < arraySort.length; i++) {
+                for (int j = 0; j < arraySort.length - 1 - i; j++) {
+                    if (arraySort[j] > arraySort[j + 1]) {
+                        int tempNum = arraySort[j];
+                        arraySort[j] = arraySort[j + 1];
+                        arraySort[j + 1] = tempNum;
+                        counter++;
+                        System.out.println("Elements swaped: " + counter);
+                        System.out.println("This is the array after the swap " + Arrays.toString(arraySort));
+                    }
                 }
             }
+            message = "This is the array after finishing sorting: " + Arrays.toString(arraySort) + "\n"
+                    + "The elements had been swaped " + counter + " times.";
+        }catch(Exception e){
+            System.out.println("Error: Only integer numbers accepted.");
+            error = true;
         }
-        return "This is the array after finishing sorting: " + Arrays.toString(arraySort) + "\n"
-              + "The elements had been swaped " + counter + " times.";
+        if (error) {
+            return null;
+        } else {
+            return message;
+        }
+        
+        
         
     }
     
@@ -387,7 +453,7 @@ public class CalculatorCA2 {
                         + "0. Exit. \n");
             menuChoice = input.nextInt();
         }catch(Exception e){
-            System.out.println(e.getMessage());
+            System.out.println("Error: Plese enter a valid integer number from the Menu provided.");
         }
         return menuChoice;
     } 

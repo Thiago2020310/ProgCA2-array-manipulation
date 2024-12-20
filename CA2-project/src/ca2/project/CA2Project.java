@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author User
+ * @author Thiago Gomes de Souza
  */
 public class CA2Project {
 
@@ -57,16 +57,28 @@ public class CA2Project {
                         }
                         break;
                     case 3:
-                        System.out.println(newCalc.diagSum());
-                        menuChoice = newCalc.getChoice();
+                        result = newCalc.diagSum();
+                        if (result == null) {
+                            return;
+                        } else {
+                            System.out.println(result);
+                        }
                         break;
                     case 4:
-                        System.out.println(newCalc.spiralTrav());
-                        menuChoice = newCalc.getChoice();
+                        result = newCalc.spiralTrav();
+                        if (result == null) {
+                            return;
+                        } else {
+                            System.out.println(result);
+                        }
                         break;
                     case 5:
-                        System.out.println(newCalc.bubbleSort());
-                        menuChoice = newCalc.getChoice();
+                        result = newCalc.bubbleSort();
+                        if (result == null) {
+                            return;
+                        } else {
+                            System.out.println(result);
+                        }
                         break;
                     default:
                         System.out.println("Enter a valid choice.");
@@ -75,7 +87,13 @@ public class CA2Project {
                 //This if condition will assure that the loop will only run again if the user choice is not equals 0.
                 if(menuChoice !=0){
                     System.out.println("Want to do another operation ?: 1. Yes or 2.No (Enter the number;)");
-                    int newOp = input.nextInt();
+                    int newOp = 0;
+                    try{
+                        newOp = input.nextInt(); 
+                    }catch(Exception e){
+                        System.out.println("Error: only integer numbers accepted");
+                        return;
+                    }
                     if(newOp == 1){
                         menuChoice = newCalc.getChoice();
                     }else if(newOp ==2){
@@ -85,6 +103,7 @@ public class CA2Project {
                         System.out.println("Please enter a valid number");
                     }
                 }else{
+                    System.out.println("Thanks for using our calculator");
                     return;
                 }
                 
