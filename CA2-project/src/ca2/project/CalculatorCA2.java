@@ -23,6 +23,10 @@ public class CalculatorCA2 {
         int result;
     }
     
+    
+    
+    
+    
     /*
     //_________________________________________TASK 1_______________________________________
     Task 1: Array Search – Find the First Repeated Element
@@ -39,9 +43,19 @@ public class CalculatorCA2 {
     
     public String getFirstElement(){
         String message = "";
+        boolean error = false;
         try{
+            int arraySize = 0;
             System.out.println("Enter the Size of the array: ");
-            int arraySize = input.nextInt();
+            try{
+                arraySize = input.nextInt();
+            }catch(Exception e){
+                System.out.println("Error: You need to input an integer number for the size of the array.");
+                error = true;
+            }
+            if (error) {
+                return null;
+            }
             System.out.println("Enter the elements of the array: ");
             int[] arrayElements = new int[arraySize];
             int tempElement = input.nextInt();
@@ -68,11 +82,19 @@ public class CalculatorCA2 {
                 message = "No duplicate elements found.";
                 return message;
             }
-        }catch(ArithmeticException e){
-            System.out.println(e.getMessage());
+        }catch(Exception e){
+            System.out.println("Error: Only numbers are accepted. ");
+            error = true;
         }
-        return message;
+        if(error){
+            return null;
+        }else{
+            return message;
+        }
     }
+    
+    
+    
     
     
     //_________________________________________TASK 2_______________________________________
@@ -85,34 +107,61 @@ public class CalculatorCA2 {
     Populate the 2D array with the multiplication values and display the table in matrix form.
         -Loops to create the multiplication table, with outer loop representing the rows and the inner looping representing the columns:
      */
-    public int[][] multTable2D(){
-        System.out.println("What is the size of the multiplication table: ");
-            int multTableSize = input.nextInt();
+    public String multTable2D(){
+        String message = "";
+        boolean error = false;
+        try{
+            System.out.println("What is the size of the multiplication table: ");
+            int multTableSize = 0;
+            System.out.println("Enter the Size of the array: ");
+            try {
+                multTableSize = input.nextInt();
+            } catch (Exception e) {
+                System.out.println("Error: You need to input an integer number for the size of the array.");
+                error = true;
+            }
+            if (error) {
+                return null;
+            }
             int[][] multTable = new int[multTableSize][multTableSize];
             int num1 = 1;
             int multiplier = 1;
             int result = 0;
             System.out.println("This is your Matrix multiplication table: ");
-            for(int i=0; i < multTable.length; i++){
-                for(int j=0; j< multTable.length; j++){
+            for (int i = 0; i < multTable.length; i++) {
+                for (int j = 0; j < multTable.length; j++) {
                     result = num1 * multiplier;
                     multTable[i][j] = result;
                     multiplier++;
-                    if(result < 10){
-                        System.out.print("  0" + multTable[i][j] + "   ");
-                    }else{
-                        System.out.print("  " + multTable[i][j] + "   ");
+                    if (result < 10) {
+//                        System.out.print("  0" + multTable[i][j] + "   ");
+                        message += "  0" + multTable[i][j] + "   ";
+                    } else {
+//                        System.out.print("  " + multTable[i][j] + "   ");
+                        message += "  " + multTable[i][j] + "   ";
                     }
                 }
                 num1++;
                 multiplier = 1;
-                System.out.println(" ");
+                message += "\n";
             }
-            
-            //The return here will not actualy return any value. The table will be displayed to the user with the for loop.
-            return multTable;
-            //System.out.println(Arrays.deepToString(multTable));
+        }catch(Exception e){
+            System.out.println("Error: Only ingeter numbers accepted.");
+        }
+
+
+        //The return here will not actualy return any value. The table will be displayed to the user with the for loop.
+        if (error) {
+            return null;
+        } else {
+            return message;
+        }
+        //System.out.println(Arrays.deepToString(multTable));
     }
+    
+    
+    
+    
     
     //_________________________________________TASK 3_______________________________________
     /*     
@@ -138,6 +187,10 @@ public class CalculatorCA2 {
                 -Within the loop we will calculate the result by adding the sum with the element on row and i;
                 -Lastly we will increment the row variable within the loop to jump to next row. 
      */
+    
+    
+    
+    
     public String diagSum(){
         System.out.println("Enter the size of the matrix");
         int matrixSize = input.nextInt();
@@ -173,7 +226,6 @@ public class CalculatorCA2 {
         }
         return "The main diagonal on this matrix sum to: " + mainSumResult + "\n"
                 + "The sum of the secondary diagonal on this matrix is: " + secSumResult;
-            
     }
     
     /*
@@ -326,7 +378,7 @@ public class CalculatorCA2 {
         int menuChoice = 0;
         try{
             System.out.println(
-                        "\nCan we help you with anything else ?\n"
+                        "\nEnter the operation:\n"
                         + "1. Find the first repeated element on a list.\n"
                         + "2. Multiplication Table Using 2D list. \n"
                         + "3. Get the diagonal sum of a Matrix. \n"

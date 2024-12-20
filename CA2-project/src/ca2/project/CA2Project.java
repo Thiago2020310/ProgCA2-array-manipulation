@@ -33,19 +33,28 @@ public class CA2Project {
             boolean exitMenu = false;
             while(!exitMenu){
                 System.out.println("You selected "+ menuChoice);
+                String result = "";
                 switch (menuChoice) {
                     case 0:
                         System.out.println("Thank you for using our calculator.");
                         exitMenu = true;
                         break;
                     case 1:
-                        System.out.println(newCalc.getFirstElement());
-                        menuChoice = newCalc.getChoice();
+                         result = newCalc.getFirstElement();
+                        if(result == null){
+                            return;
+                        }else{
+                            System.out.println(result);
+                        }
                         break;
                     case 2:
                         //This method/function will return the 2d array multiplication. This can be stored into a variable if needed.
-                        newCalc.multTable2D();
-                        menuChoice = newCalc.getChoice();
+                        result = newCalc.multTable2D();
+                        if(result == null) {
+                            return;
+                        }else{
+                            System.out.println(result);
+                        }
                         break;
                     case 3:
                         System.out.println(newCalc.diagSum());
@@ -63,6 +72,21 @@ public class CA2Project {
                         System.out.println("Enter a valid choice.");
                 }
                 
+                //This if condition will assure that the loop will only run again if the user choice is not equals 0.
+                if(menuChoice !=0){
+                    System.out.println("Want to do another operation ?: 1. Yes or 2.No (Enter the number;)");
+                    int newOp = input.nextInt();
+                    if(newOp == 1){
+                        menuChoice = newCalc.getChoice();
+                    }else if(newOp ==2){
+                        System.out.println("Thanks for using our calculator");
+                        return;
+                    }else{
+                        System.out.println("Please enter a valid number");
+                    }
+                }else{
+                    return;
+                }
                 
             }
             
