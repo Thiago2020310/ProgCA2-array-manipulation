@@ -20,9 +20,55 @@ public class CA2Project {
         
         try{
             Scanner input = new Scanner(System.in);
+            CalculatorCA2 newCalc = new CalculatorCA2();
+            System.out.println("Welcome to the CA2 calculator:");
+            System.out.println("What can we help you with ?: (enter only the number) \n"
+                    + "1. Find the first repeated element on a list.\n"
+                    + "2. Multiplication Table Using 2D list. \n"
+                    + "3. Get the diagonal sum of a Matrix. \n"
+                    + "4. Get a list of the traversal of a Matrix. \n"
+                    + "5. Bubble sort a list.\n"
+                    + "0. Exit. \n");
+            int menuChoice = input.nextInt();
+            boolean exitMenu = false;
+            while(!exitMenu){
+                System.out.println("You selected "+ menuChoice);
+                switch (menuChoice) {
+                    case 0:
+                        System.out.println("Thank you for using our calculator.");
+                        exitMenu = true;
+                        break;
+                    case 1:
+                        System.out.println(newCalc.getFirstElement());
+                        menuChoice = newCalc.getChoice();
+                        break;
+                    case 2:
+                        //This method/function will return the 2d array multiplication. This can be stored into a variable if needed.
+                        newCalc.multTable2D();
+                        menuChoice = newCalc.getChoice();
+                        break;
+                    case 3:
+                        System.out.println(newCalc.diagSum());
+                        menuChoice = newCalc.getChoice();
+                        break;
+                    case 4:
+                        System.out.println(newCalc.spiralTrav());
+                        menuChoice = newCalc.getChoice();
+                        break;
+                    case 5:
+                        System.out.println(newCalc.bubbleSort());
+                        menuChoice = newCalc.getChoice();
+                        break;
+                    default:
+                        System.out.println("Enter a valid choice.");
+                }
+                
+                
+            }
+            
             /*
             
-            //_________________________________________TASK 2_______________________________________
+            //_________________________________________TASK 1_______________________________________
 
             
             Task 1: Array Search – Find the First Repeated Element
@@ -275,11 +321,10 @@ public class CA2Project {
             3. Display the array before and after sorting.
             4. Count and display the total number of swaps performed during the sorting process.
             -We can use a variable to hold this number and increment the variable when the conditional is true.
-             */
+             
             int[] arrayTest = {6,2,8,4,10};
             System.out.println(Arrays.toString(arrayTest));
             int counter = 0;
-
             for(int i = 0; i < arrayTest.length; i++) {
                 for(int j = 0; j < arrayTest.length-1-i; j++){
                     if (arrayTest[j] > arrayTest[j +1]) {
@@ -294,7 +339,7 @@ public class CA2Project {
             }
             System.out.println("This is the array after finishing sorting: " + Arrays.toString(arrayTest));
             System.out.println("The elements had been swaped " + counter + " times.");
-            
+            */
         }catch(Exception e){
             System.out.println(e.getLocalizedMessage());
         }
