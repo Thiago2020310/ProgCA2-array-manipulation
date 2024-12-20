@@ -9,7 +9,10 @@ import java.util.Scanner;
 
 /**
  *
- * @author Thiago Gomes de Souza
+ * @author Thiago Gomes de Souza - 2020310
+ *          CCT STUDENT
+ *          https://github.com/Thiago2020310/ProgCA2-array-manipulation
+ *          
  */
 public class CA2Project {
 
@@ -19,8 +22,11 @@ public class CA2Project {
     public static void main(String[] args) {
         
         try{
+            //Importing scanner to a input variable
             Scanner input = new Scanner(System.in);
+            //Creating a calculator object based on the class
             CalculatorCA2 newCalc = new CalculatorCA2();
+            //Welcomes the user and give the user the first options of the calculator
             System.out.println("Welcome to the CA2 calculator:");
             System.out.println("What can we help you with ?: (enter only the number) \n"
                     + "1. Find the first repeated element on a list.\n"
@@ -30,17 +36,24 @@ public class CA2Project {
                     + "5. Bubble sort a list.\n"
                     + "0. Exit. \n");
             int menuChoice = input.nextInt();
+            //Variable to control the loop/execution of the calculator
             boolean exitMenu = false;
+            //While exitMenu is false the program keeps 
             while(!exitMenu){
                 System.out.println("You selected "+ menuChoice);
                 String result = "";
                 switch (menuChoice) {
+                    //If the user enters 0, exitMenu is true and we stop the loop with a thank you message
                     case 0:
                         System.out.println("Thank you for using our calculator.");
                         exitMenu = true;
                         break;
+                        
+                    //All the cases will be handled the same way,the result variable holds the message from the correct method. 
+                    //If the method returned null we stop the loop. If the result has a message we print to the user.
+                    //The error will be handled on the methods.
                     case 1:
-                         result = newCalc.getFirstElement();
+                        result = newCalc.getFirstElement();
                         if(result == null){
                             return;
                         }else{
@@ -384,7 +397,7 @@ public class CA2Project {
             System.out.println("The elements had been swaped " + counter + " times.");
             */
         }catch(Exception e){
-            System.out.println(e.getLocalizedMessage());
+            System.out.println("Please enter a valid option/integer.");
         }
 
         

@@ -24,8 +24,11 @@ public class CalculatorCA2 {
     }
     
     
-    
-    
+    /*
+    Ps. All of the Tasks are separated by methods. The methods error handling are similar or equal to each other:
+    Try and catch is being used for the whole code inside the methods, since we are only accepting integers, the programs will only break if the user don't enter a integer.
+    A try and catch is being used on the size of the matrixes to send a personalized message for the user and stop the function as soon as that error is found.
+    */
     
     /*
     //_________________________________________TASK 1_______________________________________
